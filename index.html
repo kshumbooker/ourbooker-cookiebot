@@ -34,6 +34,26 @@
     <link rel="stylesheet" href="https://www.ourbooker.co.uk/css/OurBooker/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <!-- scripts -->
+ <script>
+     const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.addedNodes) {
+      mutation.addedNodes.forEach((node) => {
+        if (node.tagName === 'STYLE' && 
+            (node.textContent.includes('Cookiebot') || 
+             node.textContent.includes('Cybot'))) {
+          node.remove();
+        }
+      });
+    }
+  });
+});
+
+observer.observe(document.head, { 
+  childList: true, 
+  subtree: true 
+});
+ </script>    
     <script id="Cookiebot"
     src="https://consent.cookiebot.com/uc.js"
     data-cbid="3eaa87f5-ce7b-40c3-bc07-d805436f36f6"
